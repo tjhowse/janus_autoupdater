@@ -44,10 +44,13 @@ def saveInstalledVersion(version):
 def getInstalledVersion():
 	if not os.path.isfile("janus_version"):
 		return "0.0"
-	
-	f = open("janus_version",'r')
-	version = f.read()
-	f.close()
+	try:
+		f = open("janus_version",'r')
+		version = f.read()
+		f.close()
+	except:
+		print("Failed to get installed version from file. Check disk read permissions.")
+		return "0.0"
 	return version
 	
 def getVersions():
@@ -114,8 +117,7 @@ if __name__ == "__main__":
 		exit()
 	fileName = downloadInstaller(latestVersion,OS)
 	saveInstalledVersion(latestVersion)
-	print "Installing "+fileName
-	exit()
+	print("Installing "+fileName)
 	if OS == "Windows":
 		os.startfile(fileName)
 	elif OS == "Linux":
