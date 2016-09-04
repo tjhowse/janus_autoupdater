@@ -1,6 +1,8 @@
 Checks http://archive.janusvr.com/ for a newer version of JanusVR than the one installed.
 Downloads the latest OS-appropriate installer and prompts the user to complete the installation.
 
+Compiled Windows version available. I've only tested it under Windows, but Linux and OSX should work.
+
 May break at any point in the future if the layout of the website changes.
 
 Copyright 2016 Travis Howse
