@@ -22,6 +22,7 @@ import urllib2,os,subprocess
 from sys import platform as _platform
 
 archiveURL = "http://archive.janusvr.com/"
+version = "v1.01"
 
 def getOS():
 	if _platform == "linux" or _platform == "linux2":
@@ -108,6 +109,7 @@ def downloadInstaller(version,OS):
 	return file_name
 	
 if __name__ == "__main__":
+	print("JanusVR autoupdater, version "+version)
 	OS = getOS()
 	versions = getVersions()
 	latestVersion = versions[-1]
@@ -115,9 +117,10 @@ if __name__ == "__main__":
 	if not checkNewerVersion(latestVersion,currentVersion):
 		print("You've got the latest version of JanusVR.")
 		exit()
+	print("Newer version found, downloading JanusVR version V"+latestVersion)
 	fileName = downloadInstaller(latestVersion,OS)
 	saveInstalledVersion(latestVersion)
-	print("Installing "+fileName)
+	print("Installing JanusVR version V"+latestVersion+": "+fileName)
 	if OS == "Windows":
 		os.startfile(fileName)
 	elif OS == "Linux":
