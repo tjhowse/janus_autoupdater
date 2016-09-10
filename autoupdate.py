@@ -18,11 +18,11 @@
 # You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import urllib2,os,subprocess
+import urllib2,os,subprocess,time
 from sys import platform as _platform
 
 archiveURL = "http://archive.janusvr.com/"
-version = "v1.02"
+version = "v1.03"
 
 def getOS():
 	if _platform == "linux" or _platform == "linux2":
@@ -115,7 +115,8 @@ if __name__ == "__main__":
 	latestVersion = versions[-1]
 	currentVersion = getInstalledVersion()
 	if not checkNewerVersion(latestVersion,currentVersion):
-		print("You've got the latest version of JanusVR according to "+archiveURL)
+		print("You've got JanusVR V"+currentVersion+" installed. This is the latest version according to "+archiveURL)
+		time.sleep(5)
 		exit()
 	print("Newer version found, downloading JanusVR version V"+latestVersion)
 	fileName = downloadInstaller(latestVersion,OS)
